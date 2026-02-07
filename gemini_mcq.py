@@ -19,8 +19,10 @@ Rules:
 - Engineering university level.
 - 4 options per question (A, B, C, D)
 - Only one correct answer per question
+- Show correct answer clearly
 - No extra explanations
-- Strictly follow the topics and wording of the syllabus
+- Strictly follow the syllabus text
+- Ensure answers are factually correct
 
 SYLLABUS:
 {syllabus_text}

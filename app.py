@@ -13,7 +13,6 @@ num_questions = st.slider("Number of MCQs", 10, 100, 50)
 if uploaded_file:
     syllabus_text = read_syllabus(uploaded_file)
 
-    # Check if text was successfully extracted
     if not syllabus_text.strip():
         st.error("⚠️ Could not extract text from the uploaded syllabus. Make sure it's a text-based PDF.")
         st.stop()
@@ -23,7 +22,7 @@ if uploaded_file:
 
     if st.button("Generate MCQs"):
         with st.spinner("Generating MCQs strictly from your syllabus..."):
-            # Handle large syllabi: split into chunks of 3000 chars
+            # Split syllabus if too long
             max_chars = 3000
             chunks = [syllabus_text[i:i+max_chars] for i in range(0, len(syllabus_text), max_chars)]
             all_mcqs = ""
@@ -34,16 +33,15 @@ if uploaded_file:
                 if mcqs.startswith("ERROR"):
                     st.error(mcqs)
                     st.stop()
-                all_mcqs += mcqs + "\n"
+                all_mcqs += mcqs + "\n\n"
 
-            st.success(" MCQs Generated Successfully!")
+            st.success("✅ MCQs Generated Successfully!")
             st.text_area("Generated MCQs", all_mcqs, height=400)
 
-            # Generate PDF
             pdf_file = generate_pdf(all_mcqs)
             with open(pdf_file, "rb") as f:
                 st.download_button(
-                    "Download MCQs PDF",
+                    "📥 Download MCQs PDF",
                     f,
                     file_name="Generated_MCQs.pdf",
                     mime="application/pdf"
