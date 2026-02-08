@@ -5,9 +5,9 @@ from pdf_generator import generate_pdf
 
 st.set_page_config(page_title="AI MCQ Generator", layout="centered")
 st.title("Intelligent MCQs Generator Using AI")
-st.subheader("Upload Engineering Syllabus → Get MCQs PDF")
+st.subheader("Upload  pdf → Get MCQs PDF")
 
-uploaded_file = st.file_uploader("Upload syllabus (PDF or TXT)", type=["pdf", "txt"])
+uploaded_file = st.file_uploader("Upload syllabus PDF", type=["pdf", "txt"])
 num_questions = st.slider("Number of MCQs", 10, 100, 50)
 
 if uploaded_file:
